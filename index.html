@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bowling du Lac - Ploërmel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: #f9fafb;
+            color: #1f2937;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffa200;
+        }
+
+        .btn {
+            background: #ffa200;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: #ffa200;
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?bowling') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section.bg-light {
+            background: #ffffff;
+        }
+
+        .section.bg-gray {
+            background: #f3f4f6;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            nav {
+                display: flex;
+            }
+        }
+
+        .card {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        thead {
+            background: #e5e7eb;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #f87171;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <h1 style="font-size: 1.5rem; font-weight: bold; color: #ffa200;">Bowling du Lac</h1>
+            <nav style="display: none;" class="nav-links">
+                <a href="#bowling">Bowling</a>
+                <a href="#restaurant">Restaurant</a>
+                <a href="#events">Anniversaires</a>
+                <a href="#ce">Groupes/CE</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="#" class="btn">Réserver</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Votre lieu festif à Ploërmel</h2>
+            <a href="#" class="btn" style="font-size: 1.125rem;">Réserver maintenant</a>
+        </div>
+    </section>
+
+    <section id="bowling" class="section bg-light">
+        <div class="container">
+            <h3 style="font-size: 1.875rem; font-weight: bold; text-align: center; margin-bottom: 2rem;">Nos activités
+            </h3>
+            <div class="grid grid-3">
+                <div class="card">
+                    <img src="./assets/img/bowling.jpg" alt="Bowling">
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">Bowling</h4>
+                    <p>12 pistes modernes, enfants & PMR bienvenus.</p>
+                </div>
+                <div class="card">
+                    <img src="./assets/img/resto.jpg" alt="Restaurant">
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">Restaurant B13</h4>
+                    <p>Une cuisine conviviale sur place ou à emporter.</p>
+                </div>
+                <div class="card">
+                    <img src="./assets/img/disco.jpg" alt="Discothèque">
+                    <h4 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">Discothèque</h4>
+                    <p>Des soirées festives tous les week-ends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-gray">
+        <div class="container">
+            <h3 style="font-size: 1.875rem; font-weight: bold; text-align: center; margin-bottom: 2rem;">Horaires &
+                Tarifs</h3>
+            <h4 style="margin-top: 2rem;">Horaires normaux</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jour</th>
+                        <th>Plages horaires & Tarifs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mercredi & Jeudi</td>
+                        <td>
+                            12h00 - 20h00 : 5€ / partie<br>
+                            20h00 - 00h00 : 7€ / partie
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vendredi</td>
+                        <td>
+                            12h00 - 20h00 : 5€ / partie<br>
+                            20h00 - 01h00 : 7€ / partie
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Samedi</td>
+                        <td>14h00 - 01h00 : 7€ / partie</td>
+                    </tr>
+                    <tr>
+                        <td>Dimanche</td>
+                        <td>15h00 - 22h00 : 7€ / partie</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: red; font-weight: bold; margin-top: 1rem;">
+                Tarif enfant : 5€ / partie partout, quelle que soit la plage horaire.
+              </p>
+              
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light">
+        <div class="container" style="text-align: center;">
+            <h3 style="font-size: 1.875rem; font-weight: bold; margin-bottom: 1.5rem;">Nous contacter</h3>
+            <p class="mb-4">Bowling du Lac - Avenue de la Gare, Ploërmel</p>
+            <p class="mb-4">Tél : <a href="tel:0297747171"
+                    style="color: #dc2626; font-weight: 500; text-decoration: none;">02 97 74 71 71</a></p>
+            <iframe class="map" style="width: 100%; height: 16rem; border-radius: 0.5rem; margin-top: 1.5rem;"
+                src="https://maps.google.com/maps?q=bowling%20du%20lac%20ploermel&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <p>&copy; 2025 Bowling du Lac. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
