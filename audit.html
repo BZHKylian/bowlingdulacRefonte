@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Audit – Bowling du Lac</title>
+    <style>
+        /* Base */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eaeaea;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Criticité */
+        .critique {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .elevee {
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        .moyenne {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .faible {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Header */
+        header {
+            background-color: #141414;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::after {
+            content: "";
+            display: block;
+            width: 60%;
+            margin: 0.5rem auto 0;
+            height: 3px;
+            background: #c0392b;
+            border-radius: 2px;
+        }
+
+        /* Main */
+        main {
+            padding: 2rem;
+            background-color: #eaeaea;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #c0392b;
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            border-left: 5px solid #c0392b;
+            padding-left: 0.5rem;
+        }
+
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #141414;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Audit du site <em>Bowling du Lac</em></h1>
+    </header>
+
+    <main>
+        <h2>1. Mises à jour du contenu</h2>
+        <ul>
+            <li><span class="moyenne">[Moyenne]</span> Le copyright indique “© 2015 Bowling du Lac” — renvoie à un
+                manque de mise à jour.</li>
+            <li><span class="moyenne">[Moyenne]</span> Les mentions légales mentionne encore *1&1 Internet SARL*, or
+                cette société
+                est devenue **IONOS** depuis 2018.</li>
+        </ul>
+
+        <h2>2. Sécurité & Accessibilité</h2>
+        <ul>
+            <li><span class="critique">[Critique]</span> Le site bowlingdulac.fr ne dispose pas de certificat SSL
+                (HTTPS), ce qui signifie que la connexion n’est pas sécurisée. Cette absence de chiffrement est visible
+                dans le navigateur (pas de cadenas), ce qui dégrade la confiance des visiteurs.</li>
+        </ul>
+
+        <h2>3. Structure & navigation</h2>
+        <ul>
+            <li><span class="moyenne">[Moyenne]</span> Lien URL affiché en texte brut, non cliquable.</li>
+        </ul>
+
+        <h2>4. Optimisation mobile & performance</h2>
+        <ul>
+            <li><span class="moyenne">[Moyenne]</span> Responsive mitigé : images pas toujours adaptatives.</li>
+            <li><span class="elevee">[Élevée]</span> Manque d’attributs <code>alt</code> sur les images.</li>
+            <li><span class="elevee">[Élevée]</span> Pas de lazy‑loading ni conversion en WebP détectés.</li>
+        </ul>
+
+        <h2>5. SEO & visibilité</h2>
+        <ul>
+            <li><span class="elevee">[Élevée]</span> Méta-titres et descriptions génériques, pas optimisés SEO.</li>
+            <li><span class="moyenne">[Moyenne]</span> Pas de balises <code>hreflang</code>, gestion bilingue à
+                renforcer.</li>
+            <li><span class="elevee">[Élevée]</span> Absence de sitemap.xml et robots.txt visibles.</li>
+        </ul>
+
+        <h2>6. RGPD & mentions légales</h2>
+        <ul>
+            <li><span class="elevee">[Élevée]</span> Le site semble ne pas avoir été mis à jour depuis 2015, or le RGPD
+                est en vigueur depuis mai 2018. Aucune adaptation apparente n’a été faite pour se conformer à cette
+                réglementation.</li>
+            <li><span class="critique">[Critique]</span> Absence de politique de confidentialité visible et conforme au
+                RGPD, alors que des données personnelles sont collectées via le formulaire de contact.(qui est
+                visiblement non accessible)</li>
+            <li><span class="critique">[Critique]</span> Aucune mention des droits des utilisateurs (accès,
+                rectification), ni d’informations sur la durée de conservation ou les finalités de
+                traitement.</li>
+        </ul>
+
+        <h2>7. Contenu & UX</h2>
+        <ul>
+            <li><span class="moyenne">[Moyenne]</span> Design peu interactif, visuellement austère et daté (semble
+                inchangé depuis près de 10 ans).</li>
+            <li><span class="faible">[Faible]</span> Usage d’iframes mélangeant styles graphiques.</li>
+            <li><span class="moyenne">[Moyenne]</span> Pas de témoignages ou avis clients pour rassurer les visiteurs.
+            </li>
+            <li><span class="moyenne">[Moyenne]</span> La carte du B13 est trop grande et mal intégrée dans la mise en
+                page. Une version plus compacte ou un bouton d’ouverture serait préférable. L’image pourrait s’agrandir
+                au clic (lightbox, modal…). Problème de centrage visuel des éléments sur cette section.</li>
+
+        </ul>
+
+        <h2>Recommandations prioritaires</h2>
+        <ol>
+            <li><span class="moyenne">[Moyenne]</span> Mettre à jour le copyright à 2025 et les horaires.</li>
+            <li><span class="critique">[Critique]</span> Installer et forcer HTTPS (SSL / Let’s Encrypt).</li>
+            <li><span class="elevee">[Élevée]</span> Simplifier le formulaire de contact (nom, e‑mail, message).</li>
+            <li><span class="critique">[Critique]</span> Ajouter bandeau cookies, sitemap.xml et robots.txt.</li>
+            <li><span class="elevee">[Élevée]</span> Optimiser les images (WebP, lazy-loading, attributs alt).</li>
+            <li><span class="elevee">[Élevée]</span> Améliorer SEO : titres, descriptions, balises lang, liens internes.
+            </li>
+            <li><span class="moyenne">[Moyenne]</span> Ajouter avis clients ou modules sociaux pour renforcer la
+                confiance.</li>
+        </ol>
+    </main>
+
+    <footer>
+        <p>© 2025 Kylian Houedec - Tous droits réservés.<br>
+            Conçu avec ❤️ en Bretagne.</p>
+    </footer>
+</body>
+
+</html>
