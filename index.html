@@ -22,6 +22,12 @@
             z-index: 50;
         }
 
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         h1,
         h2,
         h3,
@@ -482,13 +488,112 @@
                 height: 25px;
             }
 
-            #contact > .container{
+            #contact>.container {
                 flex-direction: column;
             }
 
-            iframe.map{
+            iframe.map {
                 width: 100%;
             }
+
+            .section {
+                padding-inline: 0.5rem;
+            }
+
+            .container {
+                padding-inline: 0.5rem;
+            }
+
+            #bowling h3,
+            #horaires h3,
+            #contact h3,
+            #avis h3 {
+                margin-bottom: 0.2rem;
+            }
+
+            #infoBowling>p {
+                margin: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            #infoBowling>h3 {
+                margin-bottom: 1rem;
+            }
+
+            .btn {
+                margin: 0;
+            }
+
+            /* Conteneur général */
+            #horaires .container {
+                padding: 1rem;
+            }
+
+            /* Boutons activité */
+            #divBtn {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            #divBtn .btn {
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Tables responsive */
+            table {
+                width: 100%;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                font-size: 0.95rem;
+            }
+
+            thead {
+                display: none;
+                /* On masque les en-têtes */
+            }
+
+            tbody{display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 0.5rem;
+                padding: 0.75rem 1rem;
+                background: white;
+            }
+
+            tbody td {
+                display: flex;
+                justify-content: center;
+                padding: 0.5rem 0;
+                border: none;
+                font-size: 1rem;
+
+            }
+
+            tbody td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #374151;
+            }
+
+            .jour{
+                width: 100%;
+                color: #ffa200;
+                font-size: 1.25rem;
+                font-weight: 600;
+                text-align: center;
+            }
+
 
         }
     </style>
@@ -602,25 +707,25 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mercredi & Jeudi</td>
+                                <td class='jour'>Mercredi & Jeudi</td>
                                 <td>
                                     12h00 - 20h00 : 5€ / partie<br />
                                     20h00 - 01h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
-                                <td>Vendredi</td>
+                                <td class='jour'>Vendredi</td>
                                 <td>
                                     12h00 - 20h00 : 5€ / partie<br />
                                     20h00 - 02h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
-                                <td>Samedi</td>
+                                <td class='jour'>Samedi</td>
                                 <td>14h00 - 02h00 : 7€ / partie</td>
                             </tr>
                             <tr>
-                                <td>Dimanche</td>
+                                <td class='jour'>Dimanche</td>
                                 <td>15h00 - 23h00 : 7€ / partie</td>
                             </tr>
                         </tbody>
@@ -636,26 +741,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mardi</td>
+                                <td class='jour'>Mardi</td>
                                 <td>14h00 - 20h00 : 7€ / partie</td>
                             <tr>
-                                <td>Mercredi & Jeudi</td>
+                                <td class='jour'>Mercredi & Jeudi</td>
                                 <td>
                                     12h00 - 01h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
-                                <td>Vendredi</td>
+                                <td class='jour'>Vendredi</td>
                                 <td>
                                     12h00 - 02h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
-                                <td>Samedi</td>
+                                <td class='jour'>Samedi</td>
                                 <td>14h00 - 02h00 : 7€ / partie</td>
                             </tr>
                             <tr>
-                                <td>Dimanche</td>
+                                <td class='jour'>Dimanche</td>
                                 <td>15h00 - 23h00 : 7€ / partie</td>
                             </tr>
                         </tbody>
@@ -678,25 +783,25 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Mercredi & Jeudi</td>
+                                <td class='jour'>Mercredi & Jeudi</td>
                                 <td>
                                     12h00 - 14h00<br />
                                     19h00 - 21h30
                                 </td>
                             </tr>
                             <tr>
-                                <td>Vendredi</td>
+                                <td class='jour'>Vendredi</td>
                                 <td>
                                     12h00 - 14h00<br />
                                     19h00 - 22h30
                                 </td>
                             </tr>
                             <tr>
-                                <td>Samedi</td>
+                                <td class='jour'>Samedi</td>
                                 <td>19h00 - 22h30</td>
                             </tr>
                             <tr>
-                                <td>Dimanche</td>
+                                <td class='jour'>Dimanche</td>
                                 <td>19h00 - 21h30</td>
                             </tr>
                         </tbody>
@@ -717,7 +822,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Vendredi & Samedi + Veille de jour férié</td>
+                                <td class='jour'>Vendredi & Samedi + Veille de jour férié</td>
                                 <td>
                                     00h00 - 06h00
                                 </td>
