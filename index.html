@@ -8,65 +8,105 @@
     <style>
         body {
             margin: 0;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f9fafb;
             color: #1f2937;
+            line-height: 1.5;
         }
 
         header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 50;
         }
 
-        h1 {
-            margin: 0;
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0 0 0.75rem 0;
+            font-weight: 700;
+            color: #1f2937;
         }
 
         .container {
             max-width: 1450px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         nav a {
-            margin: 0 1rem;
             color: inherit;
             text-decoration: none;
-            transition: color 0.2s;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: #ffa200;
+        nav a:hover,
+        nav a:focus-visible {
+            color: #ff9f1c;
+            outline: none;
+            text-decoration: underline;
         }
+
+        #menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 1.75rem;
+            color: #141414;
+        }
+
+        @media (max-width: 768px) {}
+
 
         .btn {
-            background: #ffa200;
+            background-color: #ffa200;
             color: white;
-            padding: 0.5rem 1rem;
+            width: 15rem;
+            padding: 0.6rem 1.25rem;
             border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             border: none;
-            
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            margin-bottom: 1rem;
         }
 
-        .btn:hover {
-            background: #ff8200;
+        .btn:hover,
+        .btn:focus-visible {
+            background-color: #ff8c00;
+            outline: none;
+        }
+
+
+        #reserver {
+            margin: 0;
+            width: auto;
+            margin-left: 10vw;
         }
 
         #hero {
             position: relative;
-            height: 90vh;
+            height: 85vh;
+            max-height: 750px;
             overflow: hidden;
-
             display: flex;
             align-items: center;
-            /* centre verticalement */
             justify-content: center;
-            /* centre horizontalement */
+            padding: 1rem;
         }
 
         .slide {
@@ -74,47 +114,43 @@
             width: 100%;
             height: 100%;
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             transition: transform 1s ease;
+            will-change: transform;
         }
 
         .hero-overlay {
-            width: 40%;
-            border: 2px solid #ffa200;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 0.5rem;
-            z-index: 10;
-            padding: 1rem;
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            border: 3px solid #ffa200;
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 0.75rem;
+            padding: 2rem 1.5rem;
+            color: #fff;
             text-align: center;
-            color: white;
-            /* plus besoin de position relative ni top */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .highlighted-title {
-            color: white;
-            display: inline-block;
+            font-size: 2.25rem;
+            color: #fff;
             border-bottom: 3px solid #ffa200;
-            padding-bottom: 0.2rem;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-
-        .hero-overlay>p {
-            margin: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.25rem;
         }
 
         .section {
-            padding: 4rem 1rem;
+            padding: 0 1.5rem;
         }
 
         .section.bg-light {
-            background: #ffffff;
+            background-color: #fff;
         }
 
         .section.bg-gray {
-            background: #f3f4f6;
+            background-color: #f3f4f6;
         }
 
         .grid {
@@ -122,189 +158,273 @@
             gap: 2rem;
         }
 
-        @media (min-width: 768px) {
-            .grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-            }
 
-            nav {
-                display: flex;
-            }
-        }
 
         .card {
-            background: #f3f4f6;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.2s;
+            background-color: #f9fafb;
+            padding: 1.75rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .card:hover,
+        .card:focus-within {
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
         }
 
         .card img {
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
             width: 100%;
-            height: auto;
+            height: 180px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h4 {
+            font-size: 1.375rem;
+            margin-bottom: 0.5rem;
+            color: #ffa200;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            max-width: 320px;
+            margin-bottom: 0.75rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
+            font-size: 1rem;
+            color: #374151;
+        }
+
+        thead {
+            background-color: #e5e7eb;
         }
 
         th,
         td {
-            padding: 1rem;
-            border-top: 1px solid #e5e7eb;
+            padding: 1rem 1.25rem;
+            border-top: 1px solid #d1d5db;
         }
 
-        thead {
-            background: #e5e7eb;
+        .site-footer {
+            background-color: #141414;
+            color: #f3f4f6;
+            padding: 3rem 1.5rem;
+            font-size: 0.95rem;
         }
 
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 2rem 1rem;
-        }
-
-        .footer-links {
+        .footer-container {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        .footer-links a {
-            color: #f87171;
+        .footer-column {
+            flex: 1 1 220px;
+            min-width: 200px;
+        }
+
+        .footer-column.wide {
+            flex: 2 1 300px;
+        }
+
+        .site-footer h4 {
+            color: #ffa200;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .site-footer p {
+            line-height: 1.6;
+            margin: 0.75rem 0;
+        }
+
+        .site-footer a {
+            color: #f3f4f6;
             text-decoration: none;
         }
 
-        .footer-links a:hover {
+        .site-footer a:hover,
+        .site-footer a:focus-visible {
+            color: #ffa200;
             text-decoration: underline;
+            outline: none;
         }
 
-        /* Nouveau style pour la barre d'avertissement en haut */
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+
         .warning-bar {
             background-color: #fff4e5;
             color: #b45309;
             text-align: center;
-            padding: 0.6rem 1rem;
+            padding: 0.75rem 1rem;
             font-weight: 600;
-            font-family: sans-serif;
-            font-size: 0.9rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
         }
 
-        /* Container flex header */
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        /* Container footer flex */
-        .footer-container {
+        #contact {
+            background-color: #ffa200;
+        }
+
+        #contact .container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        iframe.map {
+            width: 50%;
+            height: 18rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        #infoBowling {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
+            justify-content: center;
         }
 
-        /* Section contact */
-        #contact .container {
-            text-align: center;
-        }
-
-        /* iframe map */
-        iframe.map {
-            width: 100%;
-            height: 16rem;
-            border-radius: 0.5rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Section hero slides */
-        #hero {
-            position: relative;
-            height: 90vh;
-            overflow: hidden;
-        }
-
-        #hero .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 1s ease;
-        }
-
-        /* Buttons with larger font */
         .btn-large {
             font-size: 1.125rem;
         }
 
         #bowling h3,
-        #horaires h3 {
+        #horaires h3,
+        #contact h3,
+        #avis h3 {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.25rem;
             margin-bottom: 2rem;
             color: #1f2937;
-            font-weight: 700;
         }
 
         #bowling .grid-3 {
-            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         #bowling .card {
-            background: #f9fafb;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
             padding: 1.5rem;
-            transition: box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
         }
 
         #bowling .card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         #bowling .card img {
-            width: 100%;
             height: 180px;
-            object-fit: cover;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
             margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         #bowling .card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #ffa200;
+            font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ffa200;
         }
 
         #bowling .card p {
-            font-size: 0.95rem;
-            color: #374151;
-            line-height: 1.4;
-            margin-bottom: 0.7rem;
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.6;
             max-width: 320px;
+            margin: 0 auto 1rem auto;
         }
 
         .horaireH4 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffa200;
+            margin-bottom: 1rem;
+        }
+
+
+        .diagonal-divider-top,
+        .diagonal-divider-bottom {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            line-height: 0;
+            background-color: #ffa200;
+        }
+
+        .diagonal-divider-top svg,
+        .diagonal-divider-bottom svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+        /* Accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #ffa200;
+            outline-offset: 2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #divBtn {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+            gap: 1rem
         }
 
         @media (max-width: 600px) {
@@ -312,8 +432,67 @@
                 height: 140px;
             }
         }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width:768px) {
+
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            #menu-toggle {
+                display: block;
+                color: #1f2937;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 1rem 0;
+                border-top: 1px solid #e5e7eb;
+
+                justify-content: flex-end;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 1.5rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #f3f4f6;
+            }
+
+            #reserver {
+                margin: 0;
+            }
+
+            .diagonal-divider-top,
+            .diagonal-divider-bottom {
+                height: 25px;
+            }
+
+            #contact > .container{
+                flex-direction: column;
+            }
+
+            iframe.map{
+                width: 100%;
+            }
+
+        }
     </style>
-    
+
 </head>
 
 <body>
@@ -325,18 +504,28 @@
     </div>
     <header>
         <div class="container header-container">
-            <a href="/"><img src="./assets/img/logo.png" alt="Logo Bowling du Lac" style="width:125px; height:auto;"></a>
-            <nav c lass="nav-links">
+            <a href="/"><img src="./assets/img/logo.png" alt="Logo Bowling du Lac"
+                    style="width:125px; height:auto;"></a>
+
+            <!-- Menu toggle (visible sur mobile) -->
+            <button id="menu-toggle" aria-label="Ouvrir le menu">
+                ☰
+            </button>
+
+            <!-- Navigation principale -->
+            <nav id="main-nav" class="nav-links">
                 <a href="#bowling">Bowling de Ploërmel</a>
                 <a href="#restaurant">Restaurant B13</a>
                 <a href="#restaurant">Discothèque Lodge 13</a>
                 <a href="#events">Anniversaires</a>
                 <a href="#ce">CE/séminaires/groupes</a>
                 <a href="#contact">Contact</a>
+                <a href="#" id="reserver" class="btn">Réserver</a>
             </nav>
-            <a href="#" class="btn">Réserver</a>
+
         </div>
     </header>
+
 
     <section id="hero">
         <!-- Slides -->
@@ -385,12 +574,12 @@
     <section id="horaires" class="section bg-gray">
         <div class="container">
             <h3>Horaires par activité</h3>
-            <div style="text-align:center; margin-bottom: 2rem;">
-                <button class="btn btn-large" data-activity="bowling" style="margin-right: 1rem;">Bowling de
+            <div id='divBtn'>
+                <button class="btn btn-large" data-activity="bowling">Bowling de
                     Ploërmel</button>
-                <button class="btn btn-large" data-activity="restaurant" style="margin-right: 1rem;">Restaurant
+                <button class="btn btn-large" data-activity="restaurant"">Restaurant
                     B13</button>
-                <button class="btn btn-large" data-activity="discotheque">Discothèque Lodge 13</button>
+                <button class=" btn btn-large" data-activity="discotheque">Discothèque Lodge 13</button>
             </div>
 
             <div id="horaires-content" style="max-width: 1200px; margin: 0 auto; text-align: left;">
@@ -401,7 +590,7 @@
     <script>
         const horairesData = {
             bowling: {
-                title: "Horaires & Tarifs - Bowling",
+                title: "Horaires & Tarifs - Bowling de Ploërmel",
                 content: `
                     <h4>Horaires normaux</h4>
                     <table>
@@ -416,28 +605,63 @@
                                 <td>Mercredi & Jeudi</td>
                                 <td>
                                     12h00 - 20h00 : 5€ / partie<br />
-                                    20h00 - 00h00 : 7€ / partie
+                                    20h00 - 01h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
                                 <td>Vendredi</td>
                                 <td>
                                     12h00 - 20h00 : 5€ / partie<br />
-                                    20h00 - 01h00 : 7€ / partie
+                                    20h00 - 02h00 : 7€ / partie
                                 </td>
                             </tr>
                             <tr>
                                 <td>Samedi</td>
-                                <td>14h00 - 01h00 : 7€ / partie</td>
+                                <td>14h00 - 02h00 : 7€ / partie</td>
                             </tr>
                             <tr>
                                 <td>Dimanche</td>
-                                <td>15h00 - 22h00 : 7€ / partie</td>
+                                <td>15h00 - 23h00 : 7€ / partie</td>
+                            </tr>
+                        </tbody>
+                    </table> <br>
+
+                    <h4>Horaires vacances, fériés, et veille de jour fériés</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jour</th>
+                                <th>Plages horaires & Tarifs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mardi</td>
+                                <td>14h00 - 20h00 : 7€ / partie</td>
+                            <tr>
+                                <td>Mercredi & Jeudi</td>
+                                <td>
+                                    12h00 - 01h00 : 7€ / partie
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                                <td>
+                                    12h00 - 02h00 : 7€ / partie
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                                <td>14h00 - 02h00 : 7€ / partie</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                                <td>15h00 - 23h00 : 7€ / partie</td>
                             </tr>
                         </tbody>
                     </table>
                     <p style="color: red; font-weight: bold; margin-top: 1rem;">
-                        Tarif enfant : 5€ / partie partout, quelle que soit la plage horaire.
+                        Tarif enfant -12ans : 5€ / partie quelle que soit la plage horaire.
                     </p>
                 `
             },
@@ -498,10 +722,6 @@
                                     00h00 - 06h00
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Dimanche</td>
-                                <td>19h00 - 21h30</td>
-                            </tr>
                         </tbody>
                     </table>
                     <p style="color: red; font-weight: bold; margin-top: 1rem;">
@@ -529,32 +749,91 @@
         });
     </script>
 
+
+
+
+
+    <!-- Diagonale descendante -->
+    <div class="diagonal-divider-top">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,0 100,0 0,100" fill="#f3f4f6"></polygon>
+        </svg>
+    </div>
+
     <section id="contact" class="section bg-light">
         <div class="container">
-            <h3>Nous contacter</h3>
-            <p>Bowling du Lac - Avenue de la Gare, Ploërmel</p>
-            <p>Tél : <a href="tel:0297747171" style="color: #dc2626; font-weight: 500; text-decoration: none;">02 97 74
-                    71 71</a></p>
+            <div id="infoBowling">
+                <h3>Nous contacter</h3>
+                <p>Bowling du Lac - Avenue de la Gare, Ploërmel</p>
+                <p>Tél : <a href="tel:0297747171" style="color: #dc2626; font-weight: 500; text-decoration: none;">02 97
+                        74
+                        71
+                        71</a></p>
+            </div>
             <iframe class="map"
                 src="https://maps.google.com/maps?q=bowling%20du%20lac%20ploermel&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 allowfullscreen></iframe>
         </div>
     </section>
+    <!-- Diagonale montante -->
+    <div class="diagonal-divider-bottom">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,100 100,0 100,100" fill="#faf9fb"></polygon>
+        </svg>
+    </div>
 
-    <div style="max-width: 1200px; margin: auto;">
+
+    <div id="avis" style="max-width: 1200px; margin: auto;">
+        <h3>Avis</h3>
         <script defer async src='https://cdn.trustindex.io/loader.js?50fc53e50a5c34882a9630710c9'></script>
     </div>
-    
-    <footer>
-        <div class="container footer-container">
-            <p>&copy; 2025 Bowling du Lac. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Mentions légales</a>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Colonne 1 : Navigation -->
+            <div class="footer-column">
+                <h4>Nos espaces</h4>
+                <ul>
+                    <li><a href="#bowling">Bowling de Ploërmel</a></li>
+                    <li><a href="#restaurant">Restaurant B13 à Ploërmel</a></li>
+                    <li><a href="#restaurant">Discothèque Lodge 13</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+
+            <!-- Colonne 2 : Philosophie -->
+            <div class="footer-column wide">
+                <h4>La philosophie des lieux</h4>
+                <p>
+                    Nous avons souhaité créer un espace ludique où chacun s'amuse et passe un bon moment, qu'il soit en
+                    couple, avec des amis ou en famille, le tout sur un même lieu du midi jusqu'à la fin de la nuit.
+                </p>
+                <p>
+                    <a href="https://www.facebook.com/bowlingdulac" target="_blank" rel="noopener noreferrer">Notre page
+                        Facebook !</a>
+                </p>
+            </div>
+
+            <!-- Colonne 3 : Contact -->
+            <div class="footer-column">
+                <h4>Contactez-nous !</h4>
+                <p>
+                    Bowling du Lac<br>
+                    13 rue du Lac (à côté du Cinélac)<br>
+                    56800 Ploërmel
+                </p>
+                <p>📞 <a href="tel:0297720382">02 97 72 03 82</a> (à partir de 11h)</p>
+                <p>📧 <a href="mailto:bowlingploermel@orange.fr">bowlingploermel@orange.fr</a></p>
+                <p>🌐 <a href="http://www.bowlingdulac.fr" target="_blank" rel="noopener noreferrer">bowlingdulac.fr</a>
+                </p>
             </div>
         </div>
+
+        <div class="footer-bottom">
+            © 2025 Bowling du Lac. Tous droits réservés.
+        </div>
     </footer>
+
 
     <script>
         const slides = document.querySelectorAll('#hero .slide');
@@ -592,6 +871,14 @@
         }
 
         setInterval(nextSlide, 5000);
+
+        const toggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('main-nav');
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+
     </script>
 </body>
 
